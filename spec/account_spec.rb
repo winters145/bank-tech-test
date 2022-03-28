@@ -10,11 +10,6 @@ describe Account do
       account.deposit(100)
       expect(account.balance).to eq 100
     end
-    it "saves the date that the deposit was made" do
-      date = Date.today.strftime("%d/%m/%Y")
-      account.deposit(100)
-      expect(account.transactions[0][:date]).to eq date
-    end
   end
 
   describe "#withdraw" do
@@ -23,6 +18,31 @@ describe Account do
       account.withdraw(20)
       expect(account.balance).to eq 80
     end
+  end
+
+  describe "transactions" do
+    it "records the date that a deposit was made" do
+      date = Date.today.strftime("%d/%m/%Y")
+      account.deposit(100)
+      expect(account.transactions[0][:date]).to eq date
+    end
+    it "records the date that a withdrawal was made" do
+      date = Date.today.strftime("%d/%m/%Y")
+      account.deposit(100)
+      account.withdraw(20)
+      expect(account.transactions[1][:date]).to eq date
+    end
+    it "records the amount that was deposited" do
+      account.deposit(200)
+      expect(account.transactions[0][:amount]).to eq 200
+    end
+    it "records the amount that was withdrawn" do
+      account.deposit(200)
+      account.withdraw(100)
+      p account.transactions
+      expect(account.transactions[1][:amount]).to eq -100
+    end
+    
   end
 
   xdescribe "#statement" do
