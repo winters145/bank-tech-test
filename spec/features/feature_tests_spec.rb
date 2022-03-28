@@ -21,13 +21,14 @@ describe "Feature-tests" do
   describe "I'd like to keep track of my transactions" do
     context "on an account statement" do
 
-      xit "includes one deposit transaction on the statement" do
+      it "includes one deposit transaction on the statement" do
         account = Account.new
         date = Date.today.strftime("%d/%m/%Y")
-        account.deposit(100)
-        account.withdraw(20)
+        account.deposit(1000)
+        account.withdraw(200)
+        account.deposit(50)
         expect { account.statement }.to output(
-          "date || credit || debit || balance\n#{date} ||  || 100.00 || 100.00"
+          "date || credit || debit || balance\n#{date} ||  || 50.00 || 850.00\n#{date} || 200.00 ||  || 800.00\n#{date} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
     end
