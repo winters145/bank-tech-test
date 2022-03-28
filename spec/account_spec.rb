@@ -4,6 +4,7 @@ require 'date'
 describe Account do
 
   let(:account) { described_class.new }
+  let(:date_today) { Date.today.strftime("%d/%m/%Y") }
 
   describe "#deposit" do
     it "deposits money to the account" do
@@ -22,15 +23,13 @@ describe Account do
 
   describe "transactions" do
     it "records the date that a deposit was made" do
-      date = Date.today.strftime("%d/%m/%Y")
       account.deposit(100)
-      expect(account.transactions[0][:date]).to eq date
+      expect(account.transactions[0][:date]).to eq date_today
     end
     it "records the date that a withdrawal was made" do
-      date = Date.today.strftime("%d/%m/%Y")
       account.deposit(100)
       account.withdraw(20)
-      expect(account.transactions[1][:date]).to eq date
+      expect(account.transactions[1][:date]).to eq date_today
     end
     it "records the amount that was deposited" do
       account.deposit(200)
@@ -52,9 +51,8 @@ describe Account do
       expect(account.statement).to include "balance\n£80"
     end
     it "prints the date of a withdrawal (debit)" do
-      date = Date.today.strftime("%d/%m/%Y")
       account.deposit(100)
-      expect(account.statement).to include "date || credit || debit || balance\n#{date}"
+      expect(account.statement).to include "date || credit || debit || balance\n#{date_today}"
     end
   end
 
