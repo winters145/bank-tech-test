@@ -18,8 +18,7 @@ class Account
   end
 
   def statement
-    "balance\n£#{@balance}"
-    "date || credit || debit || balance\n"
+    "date || credit || debit || balance\n#{@transactions[-1][:date]}"
   end
 
 end

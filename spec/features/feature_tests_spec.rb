@@ -18,23 +18,17 @@ describe "Feature-tests" do
     end
   end
 
-  context "on an account statement" do
-  
-    xdescribe "I'd like to see how much money I have" do
-      it "shows the balance on the statement" do
-        account = Account.new
-        account.deposit(100)
-        account.withdraw(20)
-        expect(account.statement).to include "balance\n£80"
-      end
-    end
+  describe "I'd like to keep track of my transactions" do
+    context "on an account statement" do
 
-    xdescribe "I'd like to keep track of my transactions" do
-      it "includes the date of deposits on the statement" do
+      xit "includes one deposit transaction on the statement" do
         account = Account.new
         date = Date.today.strftime("%d/%m/%Y")
         account.deposit(100)
-        expect(account.statement).to include "date || credit || debit || balance\n#{date}"
+        account.withdraw(20)
+        expect(account.statement).to include (
+          "date || credit || debit || balance\n#{date} ||  || 100.00 || 100.00"
+        )
       end
     end
 
