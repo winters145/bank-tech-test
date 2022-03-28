@@ -1,4 +1,5 @@
 require 'account'
+require 'date'
 
 describe Account do
 
@@ -8,6 +9,11 @@ describe Account do
     it "deposits money to the account" do
       account.deposit(100)
       expect(account.balance).to eq 100
+    end
+    it "saves the date that the deposit was made" do
+      date = Date.today.strftime("%d/%m/%Y")
+      account.deposit(100)
+      expect(account.transactions[0][:date]).to eq date
     end
   end
 
@@ -19,11 +25,16 @@ describe Account do
     end
   end
 
-  describe "#statement" do
+  xdescribe "#statement" do
     it "prints the current balance of the account" do
       account.deposit(100)
       account.withdraw(20)
-      expect(account.statement).to eq "balance\n£80"
+      expect(account.statement).to include "balance\n£80"
+    end
+    it "prints the date of a withdrawal (debit)" do
+      date = Date.today.strftime("%d/%m/%Y")
+      account.deposit(100)
+      expect(account.statement).to include "date || credit || debit || balance\n#{date}"
     end
   end
 
