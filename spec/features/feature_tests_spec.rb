@@ -19,9 +19,7 @@ describe "Feature-tests" do
   end
 
   describe "I'd like to keep track of my transactions" do
-    context "on an account statement" do
-
-      it "includes one deposit transaction on the statement" do
+      it "prints a list of all transaction on the account" do
         account = Account.new
         date = Date.today.strftime("%d/%m/%Y")
         account.deposit(1000)
@@ -31,7 +29,6 @@ describe "Feature-tests" do
           "date || credit || debit || balance\n#{date} ||  || 50.00 || 850.00\n#{date} || 200.00 ||  || 800.00\n#{date} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
-    end
-
   end
+
 end
