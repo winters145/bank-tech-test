@@ -11,12 +11,12 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @transactions << {type: :deposit, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
+    save_deposit(amount)
   end
 
   def withdraw(amount)
     @balance -= amount
-    @transactions << {type: :withdrawal, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
+    save_withdrawal(amount)
   end
 
   def statement
@@ -24,9 +24,15 @@ class Account
     @transactions.reverse.each do |transaction|
       puts "#{transaction[:date]} || #{transaction[:type] == :withdrawal ? transaction[:amount] : ""} || #{transaction[:type] == :deposit ? transaction[:amount] : ""} || #{transaction[:balance]}"
     end
-    # puts "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]} || #{@transactions[-1][:balance]}"
-    # "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]} || #{@transactions[-1][:balance]}"
   end
 
+  private
 
+  def save_deposit(amount)
+    @transactions << {type: :deposit, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
+  end
+
+  def save_withdrawal(amount)
+    @transactions << {type: :withdrawal, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
+  end
 end
