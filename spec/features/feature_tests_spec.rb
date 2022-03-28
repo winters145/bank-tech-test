@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 describe 'Feature-tests' do
   describe "I'd like to be able to make a deposit to my account" do

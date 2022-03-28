@@ -3,6 +3,8 @@
     "coverage": {
       "/Users/jwinterschladen/Documents/Makers/tech-tests/bank_tech_test/spec/account_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -96,6 +98,8 @@
       },
       "/Users/jwinterschladen/Documents/Makers/tech-tests/bank_tech_test/lib/account.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -123,6 +127,9 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
           1,
           null,
           1,
@@ -139,6 +146,8 @@
       },
       "/Users/jwinterschladen/Documents/Makers/tech-tests/bank_tech_test/spec/features/feature_tests_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -174,6 +183,6 @@
         ]
       }
     },
-    "timestamp": 1648481290
+    "timestamp": 1648481896
   }
 }

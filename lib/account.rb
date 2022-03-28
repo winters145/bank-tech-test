@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class Account
@@ -21,7 +23,10 @@ class Account
   def statement
     puts 'date || credit || debit || balance'
     @transactions.reverse.each do |transaction|
-      puts "#{transaction[:date]} || #{transaction[:type] == :withdrawal ? transaction[:amount] : ''} || #{transaction[:type] == :deposit ? transaction[:amount] : ''} || #{transaction[:balance]}"
+      puts "#{transaction[:date]} || "\
+      "#{transaction[:type] == :withdrawal ? transaction[:amount] : ''} || "\
+      "#{transaction[:type] == :deposit ? transaction[:amount] : ''} || "\
+      "#{transaction[:balance]}"
     end
   end
 
