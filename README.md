@@ -23,20 +23,12 @@ date || credit || debit || balance
 How to run the code
 -------------------
 
-The following is an example of how to run the code in IRB and how each method is called (each unnessecary return value has been omitted for clarity)
-- Load up irb
+The following is an example of how to run the code in IRB and how each method is called.
 
-```sh
-3.0.0 :001 > account = Account.new
-3.0.0 :002 > account.deposit(1000)
-3.0.0 :003 > account.withdraw(200)
-3.0.0 :004 > account.deposit(50)
-3.0.0 :005 > account.statement
-date || credit || debit || balance
-28/03/2022 ||  || 50.00 || 850.00
-28/03/2022 || 200.00 ||  || 800.00
-28/03/2022 ||  || 1000.00 || 1000.00
-```
+From the command line:
+
+![Alt text](./public/IRB-example.png "IRB example code")
+
 
 Process
 -------
