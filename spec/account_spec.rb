@@ -2,9 +2,10 @@ require 'account'
 
 describe Account do
 
+  let(:account) { described_class.new }
+
   describe "#deposit" do
     it "deposits money to the account" do
-      account = Account.new
       account.deposit(100)
       expect(account.balance).to eq 100
     end
@@ -12,7 +13,6 @@ describe Account do
 
   describe "#withdraw" do
     it "withdraws money from the account" do
-      account = Account.new
       account.deposit(100)
       account.withdraw(20)
       expect(account.balance).to eq 80
