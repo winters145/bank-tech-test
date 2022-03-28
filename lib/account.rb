@@ -34,12 +34,12 @@ class Account
   private
 
   def save_deposit(amount)
-    @transactions << { type: :deposit, date: Date.today.strftime('%d/%m/%Y'), amount: '%.2f' % amount,
+    @transactions << { type: :deposit, date: Date.today.strftime('%d/%m/%Y'), amount: format('%.2f', amount),
                        balance: format('%.2f', @balance) }
   end
 
   def save_withdrawal(amount)
-    @transactions << { type: :withdrawal, date: Date.today.strftime('%d/%m/%Y'), amount: '%.2f' % amount,
+    @transactions << { type: :withdrawal, date: Date.today.strftime('%d/%m/%Y'), amount: format('%.2f', amount),
                        balance: format('%.2f', @balance) }
   end
 end
