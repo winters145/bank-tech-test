@@ -50,29 +50,35 @@ describe Account do
     context "on the account statement" do
       it "prints the date of a single deposit (debit)" do
         account.deposit(1000.00)
-        expect(account.statement).to include "date || credit || debit || balance\n#{date_today}"
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
+        ).to_stdout
       end
       it "prints the amount of a single deposit (debit)" do
         account.deposit(1000.00)
-        expect(account.statement).to include "1000.00"
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
+        ).to_stdout
       end
       it "prints a deposit transaction in the debit column" do
         account.deposit(1000.00)
-        expect(account.statement).to include (
-          "date || credit || debit || balance\n#{date_today} ||  || 1000.00"
-        )
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
+        ).to_stdout
       end
       it "prints the total balance at the time of the transaction" do
         account.deposit(1000.00)
-        expect(account.statement).to eq (
-          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00"
-        )
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
+        ).to_stdout
       end
-      # it "prints multiple deposit transactions" do
-      #   account.deposit(300.00)
-      #   account.deposit(200.00)
-      #   expect(account.statement).to include 
-      # end
+      it "prints multiple deposit transactions" do
+        account.deposit(300.00)
+        account.deposit(200.00)
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 300.00 || 300.00\n#{date_today} ||  || 200.00 || 500.00\n"
+        ).to_stdout
+      end
     end
   end
 

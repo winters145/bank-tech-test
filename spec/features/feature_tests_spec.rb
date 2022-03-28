@@ -26,9 +26,9 @@ describe "Feature-tests" do
         date = Date.today.strftime("%d/%m/%Y")
         account.deposit(100)
         account.withdraw(20)
-        expect(account.statement).to include (
+        expect { account.statement }.to output(
           "date || credit || debit || balance\n#{date} ||  || 100.00 || 100.00"
-        )
+        ).to_stdout
       end
     end
 
