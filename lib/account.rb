@@ -1,3 +1,5 @@
+require 'date'
+
 class Account
 
   attr_reader :balance, :transactions
@@ -18,7 +20,8 @@ class Account
   end
 
   def statement
-    "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:amount]}"
+    puts "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]}"
+    "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]}"
   end
 
 end

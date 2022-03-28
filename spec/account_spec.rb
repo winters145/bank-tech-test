@@ -56,6 +56,12 @@ describe Account do
         account.deposit(1000.00)
         expect(account.statement).to include "1000.00"
       end
+      it "prints a deposit transaction in the debit column" do
+        account.deposit(1000.00)
+        expect(account.statement).to include (
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00"
+        )
+      end
     end
   end
 
