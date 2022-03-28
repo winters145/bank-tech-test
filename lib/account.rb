@@ -2,6 +2,7 @@
 
 require 'date'
 
+# Bank account class for processing transactions and statements
 class Account
   attr_reader :balance, :transactions
 
