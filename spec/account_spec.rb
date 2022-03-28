@@ -79,6 +79,14 @@ describe Account do
           "date || credit || debit || balance\n#{date_today} ||  || 200.00 || 500.00\n#{date_today} ||  || 300.00 || 300.00\n"
         ).to_stdout
       end
+      it "prints both deposit and withdrawal transactions in the correct columns" do
+        account.deposit(400)
+        account.withdraw(100)
+        account.deposit(200)
+        expect { account.statement }.to output(
+          "date || credit || debit || balance\n#{date_today} ||  || 200.00 || 500.00\n#{date_today} || 100.00 ||  || 300.00\n#{date_today} ||  || 400.00 || 400.00\n"
+        ).to_stdout
+      end
     end
   end
 
