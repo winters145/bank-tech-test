@@ -11,17 +11,17 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @transactions << {type: :deposit, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount}
+    @transactions << {type: :deposit, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
   end
 
   def withdraw(amount)
     @balance -= amount
-    @transactions << {type: :withdrawal, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount}
+    @transactions << {type: :withdrawal, date: Date.today.strftime("%d/%m/%Y"), amount: '%.2f' % amount, balance: '%.2f' % @balance}
   end
 
   def statement
-    puts "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]}"
-    "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]}"
+    puts "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]} || #{@transactions[-1][:balance]}"
+    "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]} || #{@transactions[-1][:balance]}"
   end
 
 end

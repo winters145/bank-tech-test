@@ -62,6 +62,17 @@ describe Account do
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00"
         )
       end
+      it "prints the total balance at the time of the transaction" do
+        account.deposit(1000.00)
+        expect(account.statement).to eq (
+          "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00"
+        )
+      end
+      # it "prints multiple deposit transactions" do
+      #   account.deposit(300.00)
+      #   account.deposit(200.00)
+      #   expect(account.statement).to include 
+      # end
     end
   end
 
