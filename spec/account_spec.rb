@@ -19,4 +19,12 @@ describe Account do
     end
   end
 
+  describe "#statement" do
+    it "prints the current balance of the account" do
+      account.deposit(100)
+      account.withdraw(20)
+      expect(account.statement).to eq "balance\n£80"
+    end
+  end
+
 end

@@ -17,4 +17,13 @@ describe "Feature-tests" do
     end
   end
 
+  describe "I'd like to see how much money I have on my account statement" do
+    it "prints a statement showing the balance" do
+      account = Account.new
+      account.deposit(100)
+      account.withdraw(20)
+      expect(account.statement).to eq "balance\n£80"
+    end
+  end
+
 end

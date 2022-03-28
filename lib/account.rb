@@ -14,4 +14,8 @@ class Account
     @balance -= amount
   end
 
+  def statement
+    "balance\n£#{@balance}"
+  end
+
 end
