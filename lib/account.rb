@@ -21,7 +21,7 @@ class Account
 
   def statement
     puts "date || credit || debit || balance"
-    @transactions.each do |transaction|
+    @transactions.reverse.each do |transaction|
       puts "#{transaction[:date]} || #{transaction[:type] == :withdrawal ? transaction[:amount] : ""} || #{transaction[:type] == :deposit ? transaction[:amount] : ""} || #{transaction[:balance]}"
     end
     # puts "date || credit || debit || balance\n#{@transactions[-1][:date]} || #{@transactions[-1][:type] == :withdrawal ? @transactions[-1][:amount] : ""} || #{@transactions[-1][:amount]} || #{@transactions[-1][:balance]}"

@@ -72,11 +72,11 @@ describe Account do
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
-      it "prints multiple deposit transactions" do
+      it "prints multiple deposit transactions in reverse chronological order" do
         account.deposit(300.00)
         account.deposit(200.00)
         expect { account.statement }.to output(
-          "date || credit || debit || balance\n#{date_today} ||  || 300.00 || 300.00\n#{date_today} ||  || 200.00 || 500.00\n"
+          "date || credit || debit || balance\n#{date_today} ||  || 200.00 || 500.00\n#{date_today} ||  || 300.00 || 300.00\n"
         ).to_stdout
       end
     end
