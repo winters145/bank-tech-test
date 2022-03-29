@@ -14,13 +14,13 @@ class Account
   def deposit(amount)
     check_correct_input(amount)
     @balance += amount
-    save_deposit(amount)
+    save_transaction(:deposit, amount)
   end
 
   def withdraw(amount)
     check_correct_input(amount)
     @balance -= amount
-    save_withdrawal(amount)
+    save_transaction(:withdrawal, amount)
   end
 
   def statement
@@ -39,17 +39,11 @@ class Account
     raise 'Invalid input: please enter a number' unless amount.is_a?(Integer) || amount.is_a?(Float)
   end
 
-  def save_deposit(amount)
-    @transactions << { type: :deposit, 
+  def save_transaction(type, amount)
+    @transactions << { type: type, 
                        date: Date.today.strftime('%d/%m/%Y'),
                        amount: format('%.2f', amount),
                        balance: format('%.2f', @balance) }
   end
 
-  def save_withdrawal(amount)
-    @transactions << { type: :withdrawal,
-                       date: Date.today.strftime('%d/%m/%Y'),
-                       amount: format('%.2f', amount),
-                       balance: format('%.2f', @balance) }
-  end
 end
