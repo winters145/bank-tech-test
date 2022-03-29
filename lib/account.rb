@@ -12,7 +12,7 @@ class Account
   end
 
   def deposit(amount)
-    raise 'Invalid input: please enter a number' unless amount.is_a?(Integer) || amount.is_a?(Float)
+    check_correct_input(amount)
     @balance += amount
     save_deposit(amount)
   end
@@ -33,6 +33,10 @@ class Account
   end
 
   private
+
+  def check_correct_input(amount)
+    raise 'Invalid input: please enter a number' unless amount.is_a?(Integer) || amount.is_a?(Float)
+  end
 
   def save_deposit(amount)
     @transactions << { type: :deposit, 
