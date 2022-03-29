@@ -23,6 +23,9 @@ describe Account do
       account.withdraw(20.00)
       expect(account.balance).to eq 80.00
     end
+    it 'throws an error if input is not an integer' do
+      expect { account.withdraw('fifty') }.to raise_error 'Invalid input: please enter a number'
+    end
   end
 
   describe 'transactions' do

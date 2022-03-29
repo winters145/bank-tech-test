@@ -18,6 +18,7 @@ class Account
   end
 
   def withdraw(amount)
+    check_correct_input(amount)
     @balance -= amount
     save_withdrawal(amount)
   end
