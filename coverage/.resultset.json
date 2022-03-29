@@ -112,6 +112,7 @@
           null,
           null,
           1,
+          1,
           null,
           null,
           1,
@@ -136,8 +137,9 @@
           null,
           1,
           7,
-          7,
-          12,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -152,6 +154,27 @@
           null,
           1,
           24,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/jwinterschladen/Documents/Makers/tech-tests/bank_tech_test/lib/statement.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          7,
+          null,
+          null,
+          1,
+          7,
+          7,
+          12,
+          null,
           null,
           null,
           null,
@@ -203,6 +226,6 @@
         ]
       }
     },
-    "timestamp": 1648546224
+    "timestamp": 1648546774
   }
 }

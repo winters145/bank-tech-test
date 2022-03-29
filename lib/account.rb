@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative './statement'
 require 'date'
 
 # Bank account class for processing transactions and statements
@@ -23,14 +24,8 @@ class Account
     save_transaction(:withdrawal, amount)
   end
 
-  def statement
-    puts 'date || credit || debit || balance'
-    @transactions.reverse.each do |transaction|
-      puts "#{transaction[:date]} || "\
-      "#{transaction[:type] == :withdrawal ? transaction[:amount] : ''} || "\
-      "#{transaction[:type] == :deposit ? transaction[:amount] : ''} || "\
-      "#{transaction[:balance]}"
-    end
+  def print_statement
+    Statement.new(@transactions).print
   end
 
   private

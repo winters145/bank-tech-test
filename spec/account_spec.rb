@@ -51,36 +51,36 @@ describe Account do
     end
   end
 
-  describe '#statement' do
+  describe '#print_statement' do
     context 'on the account statement' do
       it 'prints the date of a single deposit (debit)' do
         account.deposit(1000.00)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
       it 'prints the amount of a single deposit (debit)' do
         account.deposit(1000.00)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
       it 'prints a deposit transaction in the debit column' do
         account.deposit(1000.00)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
       it 'prints the total balance at the time of the transaction' do
         account.deposit(1000.00)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n#{date_today} ||  || 1000.00 || 1000.00\n"
         ).to_stdout
       end
       it 'prints multiple deposit transactions in reverse chronological order' do
         account.deposit(300.00)
         account.deposit(200.00)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n"\
           "#{date_today} ||  || 200.00 || 500.00\n"\
           "#{date_today} ||  || 300.00 || 300.00\n"
@@ -90,7 +90,7 @@ describe Account do
         account.deposit(400)
         account.withdraw(100)
         account.deposit(200)
-        expect { account.statement }.to output(
+        expect { account.print_statement }.to output(
           "date || credit || debit || balance\n"\
           "#{date_today} ||  || 200.00 || 500.00\n"\
           "#{date_today} || 100.00 ||  || 300.00\n"\

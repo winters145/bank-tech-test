@@ -27,7 +27,7 @@ describe 'Feature-tests' do
       account.deposit(1000)
       account.withdraw(200)
       account.deposit(50)
-      expect { account.statement }.to output(
+      expect { account.print_statement }.to output(
         "date || credit || debit || balance\n"\
         "#{date} ||  || 50.00 || 850.00\n"\
         "#{date} || 200.00 ||  || 800.00\n"\
