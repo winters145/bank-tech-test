@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
+
 describe 'Feature-tests' do
   describe "I'd like to be able to make a deposit to my account" do
     it 'adds money to the balance of the account' do
@@ -20,7 +21,7 @@ describe 'Feature-tests' do
   end
 
   describe "I'd like to keep track of my transactions" do
-    it 'prints a list of all transaction on the account' do
+    it 'prints a list of all transactions on the account' do
       account = Account.new
       date = Date.today.strftime('%d/%m/%Y')
       account.deposit(1000)

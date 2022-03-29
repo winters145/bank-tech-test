@@ -12,6 +12,7 @@ class Account
   end
 
   def deposit(amount)
+    raise 'Invalid input: please enter a number' unless amount.is_a?(Integer) || amount.is_a?(Float)
     @balance += amount
     save_deposit(amount)
   end

@@ -8,14 +8,17 @@ describe Account do
   let(:date_today) { Date.today.strftime('%d/%m/%Y') }
 
   describe '#deposit' do
-    it 'deposits money to the account' do
+    it 'adds money to the account balance' do
       account.deposit(100.00)
       expect(account.balance).to eq 100.00
+    end
+    it 'throws an error if input is not an integer' do
+      expect { account.deposit('fifty') }.to raise_error 'Invalid input: please enter a number'
     end
   end
 
   describe '#withdraw' do
-    it 'withdraws money from the account' do
+    it 'deducts money from the account balance' do
       account.deposit(100.00)
       account.withdraw(20.00)
       expect(account.balance).to eq 80.00
