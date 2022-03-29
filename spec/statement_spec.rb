@@ -5,13 +5,13 @@ require 'date'
 describe Statement do
   let(:date_today) { Date.today.strftime('%d/%m/%Y') }
   let(:transactions) { 
-    [ 
+    [
       { type: :deposit, 
         date: date_today,
         amount: format('%.2f', 1000),
         balance: format('%.2f', 1000.00)
       }
-    ]
+]
   }
 
   let(:statement) { described_class.new(transactions) }
