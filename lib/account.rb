@@ -9,8 +9,8 @@ class Account
 
   def initialize(statement = Statement.new)
     @statement = statement
-    @balance = 0
     @transactions = []
+    @balance = 0
   end
 
   def deposit(amount)

@@ -74,12 +74,12 @@ describe Account do
       "#{date_today} ||  || 200.00 || 800.00\n"\
       "#{date_today} || 1000.00 ||  || 1000.00\n")
       account_1 = Account.new(statement)
-      expect { account_1.print_statement }.to output(
+      expect(account_1.print_statement).to eq(
           "date || credit || debit || balance\n"\
           "#{date_today} || 50.00 ||  || 850.00\n"\
           "#{date_today} ||  || 200.00 || 800.00\n"\
           "#{date_today} || 1000.00 ||  || 1000.00\n"
-        ).to_stdout
+        )
     end
 
   end
