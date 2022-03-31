@@ -7,7 +7,8 @@ require 'date'
 class Account
   attr_reader :balance, :transactions
 
-  def initialize
+  def initialize(statement = Statement.new)
+    @statement = statement
     @balance = 0
     @transactions = []
   end
@@ -25,7 +26,7 @@ class Account
   end
 
   def print_statement
-    Statement.new(@transactions).print
+    @statement.print(@transactions)
   end
 
   private

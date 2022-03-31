@@ -4,7 +4,7 @@ require 'account'
 require 'date'
 
 describe Account do
-  
+
   let(:account) { described_class.new }
   let(:date_today) { Date.today.strftime('%d/%m/%Y') }
 
@@ -69,7 +69,12 @@ describe Account do
       account.deposit(1000)
       account.withdraw(200)
       account.deposit(50)
-      expect { account.print_statement }.to output(
+      statement = double("statement", print: "date || credit || debit || balance\n"\
+      "#{date_today} || 50.00 ||  || 850.00\n"\
+      "#{date_today} ||  || 200.00 || 800.00\n"\
+      "#{date_today} || 1000.00 ||  || 1000.00\n")
+      account_1 = Account.new(statement)
+      expect { account_1.print_statement }.to output(
           "date || credit || debit || balance\n"\
           "#{date_today} || 50.00 ||  || 850.00\n"\
           "#{date_today} ||  || 200.00 || 800.00\n"\

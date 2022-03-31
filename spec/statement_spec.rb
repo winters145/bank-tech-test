@@ -14,28 +14,28 @@ describe Statement do
 ]
   }
 
-  let(:statement) { described_class.new(transactions) }
+  let(:statement) { described_class.new }
 
   describe '#print' do
     context 'on the account statement' do
       it 'prints the date of a single deposit (debit)' do
         # statement = Statement.new()
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n#{date_today} || 1000.00 ||  || 1000.00\n"
         ).to_stdout
       end
       it 'prints the amount of a single deposit (debit)' do
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n#{date_today} || 1000.00 ||  || 1000.00\n"
         ).to_stdout
       end
       it 'prints a deposit transaction in the debit column' do
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n#{date_today} || 1000.00 ||  || 1000.00\n"
         ).to_stdout
       end
       it 'prints the total balance at the time of the transaction' do
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n#{date_today} || 1000.00 ||  || 1000.00\n"
         ).to_stdout
       end
@@ -45,7 +45,7 @@ describe Statement do
                           amount: format('%.2f', 200),
                           balance: format('%.2f', 1200.00)
         }
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n"\
           "#{date_today} || 200.00 ||  || 1200.00\n"\
           "#{date_today} || 1000.00 ||  || 1000.00\n"
@@ -57,7 +57,7 @@ describe Statement do
                           amount: format('%.2f', 200),
                           balance: format('%.2f', 800.00)
         }
-        expect { statement.print }.to output(
+        expect { statement.print(transactions) }.to output(
           "date || credit || debit || balance\n"\
           "#{date_today} ||  || 200.00 || 800.00\n"\
           "#{date_today} || 1000.00 ||  || 1000.00\n"
